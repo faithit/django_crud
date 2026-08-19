@@ -1,6 +1,52 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h1 class="text-success">find products</h1>
-<p>find your favorite products here!</p>
+<div class="container">
+<!-- carousel -->
+ <section class="container my-5 ">
+    {% if carousel_items %}
+<div id="homeCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    {%for item in carousel_items %}
+    <div class="carousel-item {% if forloop.first %}active {%endif%}">
+      <img src="{{item.image.url}}" class="d-block w-100" alt="{{item.name}}" style="height:350px;object-fit: cover;">
+      <div class="carousel-caption d-none d-md-block bg-dark">
+        <h5>{{item.name}}</h5>
+        <p>{{item.price}}</p>
+      </div>
+    </div>
+        {%endfor%}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{%endif%}
+ </section>
+<h3 class="mb-4 text-success"> Featured products</h3>
+<div class="row">
+        {%for  prod in products%}
+        <div class="col-md-4 mb-4">
+            <div class="card product-card h-100">
+                    <img src="{{prod.image.url}}" alt="product image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{prod.name}}</h5>
+                        <p class=card-text>{{prod.description}}</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center">
+                        <strong>ksh{{prod.price}}</strong>
+                        <a class="btn btn-outline-primary">view</a>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+</div>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
 <h1 class="text-success text-center">Admin Dashboard</h1>
-<p class="text-center">Welcome to the admin dashboard!</p>
+<p class="text-center">Welcome {{user.username}} to the admin dashboard!</p>
 <a href="{% url 'addproduct'%}" class="btn btn-warning">ADD PRODUCT</a>
 <h2 class="text-success text-center">Product list</h2>
 <table class="table table-success table-striped-columns table-bordered table-hover">
